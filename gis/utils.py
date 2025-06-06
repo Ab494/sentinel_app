@@ -21,11 +21,11 @@ def initialize_earth_engine():
 
 
 
-def maskS2clouds(image):
     """
     Mask clouds using the Sentinel-2 QA band.
     Bits 10 and 11 are clouds and cirrus, respectively.
     """
+def mask_clouds(image):
     qa = image.select('QA60')
     cloudBitMask = 1 << 10
     cirrusBitMask = 1 << 11
