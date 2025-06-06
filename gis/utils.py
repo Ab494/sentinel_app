@@ -4,13 +4,24 @@ import datetime
 import os
 import requests
 from loguru import logger
+from django.conf import settings
+import ee
+import os
+from django.conf import settings
+
+SERVICE_ACCOUNT = 'earth-engine-sa@sentinel-image-app-462018.iam.gserviceaccount.com'  # replace with yours
+KEY_FILE = os.path.join(settings.BASE_DIR, 'credentials/gee_credentials.json')
+
+credentials = ee.ServiceAccountCredentials(SERVICE_ACCOUNT, KEY_FILE)
+ee.Initialize(credentials)
 
 def initialize_earth_engine():
     """
     Initialize Earth Engine with your project ID.
     Make sure you have authenticated with `earthengine authenticate`.
     """
-    ee.Initialize(project='sentinel-image-app-462018')  # Replace with your own project ID if needed
+    ee.Initialize(project='sentinel-image-app-462018' \
+    '')  # Replace with your own project ID if needed
 
 def maskS2clouds(image):
     """
