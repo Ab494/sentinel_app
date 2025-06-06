@@ -11,19 +11,15 @@ import json
 from django.conf import settings
 
 def initialize_earth_engine():
+    import ee
+    import os
     service_account = 'earth-engine-sa@sentinel-image-app-462018.iam.gserviceaccount.com'
     credentials_path = os.path.join('credentials', 'gee_credentials.json')
     
     credentials = ee.ServiceAccountCredentials(service_account, credentials_path)
     ee.Initialize(credentials)
 
-def initialize_earth_engine():
-    """
-    Initialize Earth Engine with your project ID.
-    Make sure you have authenticated with `earthengine authenticate`.
-    """
-    ee.Initialize(project='sentinel-image-app-462018' \
-    '')  # Replace with your own project ID if needed
+
 
 def maskS2clouds(image):
     """
