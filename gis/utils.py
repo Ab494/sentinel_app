@@ -13,11 +13,13 @@ from django.conf import settings
 def initialize_earth_engine():
     import ee
     import os
-    import json
-    from google.oauth2 import service_account
 
-    cred_json = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS_JSON")
-    credentials = service_account.Credentials.from_service_account_info(json.loads(cred_json))
+    creds_path = os.path.join(os.path.dirname(__file__), '../credentials/gee_credentials.json')
+    creds_path = os.path.abspath(creds_path)
+    credentials = ee.ServiceAccountCredentials(
+        email='earth-engine-sa@sentinel-image-app-462018.iam.gserviceaccount.com',
+        key_file=creds_path
+    )
     ee.Initialize(credentials)
 
 
