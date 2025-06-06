@@ -6,4 +6,4 @@ _pycache_/
 
 *.log
 db.sqlite3
-media/
+media/credentials/gee_credentials.json git add .gitignore git commit -m Add credentials file to .gitignore

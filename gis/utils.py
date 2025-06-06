@@ -13,10 +13,11 @@ from django.conf import settings
 def initialize_earth_engine():
     import ee
     import os
-    service_account = 'earth-engine-sa@sentinel-image-app-462018.iam.gserviceaccount.com'
-    credentials_path = os.path.join('credentials', 'gee_credentials.json')
-    
-    credentials = ee.ServiceAccountCredentials(service_account, credentials_path)
+    import json
+    from google.oauth2 import service_account
+
+    cred_json = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS_JSON")
+    credentials = service_account.Credentials.from_service_account_info(json.loads(cred_json))
     ee.Initialize(credentials)
 
 
@@ -25,7 +26,7 @@ def initialize_earth_engine():
     Mask clouds using the Sentinel-2 QA band.
     Bits 10 and 11 are clouds and cirrus, respectively.
     """
-def mask_clouds(image):
+def maskS2clouds(image):
     qa = image.select('QA60')
     cloudBitMask = 1 << 10
     cirrusBitMask = 1 << 11
