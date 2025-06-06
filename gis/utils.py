@@ -7,13 +7,15 @@ from loguru import logger
 from django.conf import settings
 import ee
 import os
+import json
 from django.conf import settings
 
-SERVICE_ACCOUNT = 'earth-engine-sa@sentinel-image-app-462018.iam.gserviceaccount.com'  # replace with yours
-KEY_FILE = os.path.join(settings.BASE_DIR, 'credentials/gee_credentials.json')
-
-credentials = ee.ServiceAccountCredentials(SERVICE_ACCOUNT, KEY_FILE)
-ee.Initialize(credentials)
+def initialize_earth_engine():
+    service_account = 'earth-engine-sa@sentinel-image-app-462018.iam.gserviceaccount.com'
+    credentials_path = os.path.join('credentials', 'gee_credentials.json')
+    
+    credentials = ee.ServiceAccountCredentials(service_account, credentials_path)
+    ee.Initialize(credentials)
 
 def initialize_earth_engine():
     """
