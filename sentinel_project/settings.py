@@ -20,7 +20,7 @@ SECRET_KEY = 'django-insecure-@52vaf_wi5uz4vt+x36n8gt9@z32%sjx#igr-4ia&&)n!a2c56
 
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sentinel-app-ngdf.onrender.com']
 
 
 # Application definition
