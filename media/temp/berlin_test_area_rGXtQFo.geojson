@@ -1,0 +1,21 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"name": "Berlin_TestArea"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [13.4033, 52.5200],
+            [13.4133, 52.5200],
+            [13.4133, 52.5270],
+            [13.4033, 52.5270],
+            [13.4033, 52.5200]
+          ]
+        ]
+      }
+    }
+  ]
+}
